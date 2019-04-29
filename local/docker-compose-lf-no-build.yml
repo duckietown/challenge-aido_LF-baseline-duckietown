@@ -32,19 +32,15 @@ services:
             dockerfile: DockerfileLFSlim
         networks:
         - gym-duckietown-net
-
         command: /bin/bash -c "source /home/software/docker/env.sh && 
-                              ./set_vehicle_name.sh  && 
-                              make build-catkin-parallel  && 
-                              source /home/software/catkin_ws/devel/setup.bash && 
-                              roslaunch /lf_slim.launch"
+                               ./set_vehicle_name.sh && 
+                               source /home/software/catkin_ws/devel/setup.bash && 
+                               roslaunch /lf_slim.launch"
         volumes:
         - ./Software/:/home/software/
         entrypoint:
         - "qemu3-arm-static"
         environment:
-        - "ROS_MASTER_URI=http://lanefollow:11311"
-        - DUCKIETOWN_SERVER=gym-duckietown-server
         - "HOSTNAME=default"
 
     # Optional: Just records a bagfile for monitoring purposes
@@ -54,13 +50,11 @@ services:
         - gym-duckietown-net
         depends_on:
         - "lanefollow"
-        command: bash -c "sleep 10 && rosbag record /default/line_detector_node/image_with_lines -O /tmp/rosbag/full.bag -l 1000"
+        command: bash -c "sleep 10 && rosbag record /default/line_detector_node/image_with_lines -O /home/rosbag/full.bag -l 1000"
         volumes:
         - /tmp/rosbag:/tmp/rosbag
         environment:
         - "ROS_MASTER_URI=http://lanefollow:11311"
-        - DUCKIETOWN_SERVER=gym-duckietown-server
-        - "HOSTNAME=default"
 
 
 networks:

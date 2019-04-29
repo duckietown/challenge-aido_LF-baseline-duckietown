@@ -28,6 +28,7 @@
                     <!-- NOTE: "line_detector_param_file_name" as special case -->
                     <arg name="param_file_name" value="$(arg line_detector_param_file_name)"/>
                     <arg name="verbose" value="$(arg verbose)" />
+                    <arg name="local" value="true" />
                 </include>
             </group>
 
@@ -37,6 +38,7 @@
                         <arg name="veh" value="$(arg veh)"/>
                         <arg name="config" value="$(arg config)"/>
                         <arg name="param_file_name" value="$(arg param_file_name)"/>
+                        <arg name="local" value="true" />
                     </include>
             </group>
 
@@ -48,6 +50,7 @@
                     <arg name="veh" value="$(arg veh)"/>
                     <arg name="config" value="$(arg config)"/>
                     <arg name="param_file_name" value="$(arg param_file_name)"/>
+                    <arg name="local" value="true" />
                 </include>
             </group>
             
@@ -61,6 +64,7 @@
                     <arg name="veh" value="$(arg veh)"/>
                     <arg name="config" value="$(arg config)"/>
                     <arg name="param_file_name" value="$(arg param_file_name)"/>
+                    <arg name="local" value="true" />
                 </include>
             </group>
 
@@ -71,19 +75,19 @@
                 <include file="$(find dagu_car)/launch/inverse_kinematics_node.launch">
                     <arg name="veh" value="$(arg veh)"/>
                     <arg name="config" value="$(arg config)"/>
+                    <arg name="local" value="true" />
                 </include>
             </group>
+    
+            <!-- Start Test Node -->
+            <!-- <node pkg="dt_dependent_node" name="dt_dependent_node" type="dt_dependent_node.py" output="screen" />  -->
+            <!-- End Test Node -->
+            
+            <!-- Start Copied, Custom Node -->
+            <!-- <include file="$(find custom_line_detector)/launch/line_detector_node.launch"/> -->
+            <!-- End Copied, Custom Node -->
 
     </group>
     <!-- End Lane Control -->
-
-    <!-- Start Test Node -->
-    <node pkg="dt_dependent_node" name="dt_dependent_node" type="dt_dependent_node.py" output="screen" /> 
-    <!-- End Test Node -->
-
-    <!-- Start Copied, Custom Node -->
-    <!-- Replace Line 25 with this line below! -->
-    <!-- <include file="$(find custom_line_detector)/launch/line_detector_node.launch"/> -->
-    <!-- End Copied, Custom Node -->
 
 </launch>
