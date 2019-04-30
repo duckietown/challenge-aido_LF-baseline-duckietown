@@ -1,7 +1,9 @@
 version: '3'
 services:
     gym-duckietown-ros:
-        image: duckietown/gym-duckietown-ros-agent
+        build: 
+            context: .
+            dockerfile: DockerfileRosAgent
         command: /bin/bash -c "./agent/run_display.bash &&
                                source dt_msg_ws/devel/setup.bash && 
                                /usr/bin/python agent/rosagent.py"
