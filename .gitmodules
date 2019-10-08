@@ -1,0 +1,16 @@
+[submodule "1_develop/gym-duckietown"]
+	path = 1_develop/gym-duckietown
+	url = https://github.com/duckietown/gym-duckietown
+        branch = daffy
+[submodule "1_develop/dt-core"]
+	path = 1_develop/catkin_ws/src/dt-core
+	url = https://github.com/duckietown/dt-core.git
+        branch = daffy
+[submodule "1_develop/dt-ros-commons"]
+	path = 1_develop/catkin_ws/src/dt-ros-commons
+	url = https://github.com/duckietown/dt-ros-commons.git
+        branch = daffy
+[submodule "1_develop/dt-car-interface"]
+	path = 1_develop/catkin_ws/src/dt-car-interface
+	url = https://github.com/duckietown/dt-car-interface.git
+        branch = daffy
