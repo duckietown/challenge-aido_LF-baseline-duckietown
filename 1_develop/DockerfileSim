@@ -29,12 +29,12 @@ RUN python -m pip install -r duckietown/requirementspy2.txt
 WORKDIR /duckietown
 
 
-RUN mkdir custom_ws
-COPY custom_ws custom_ws
+RUN mkdir sim_ws
+COPY sim_ws sim_ws
 
 
 RUN . /opt/ros/melodic/setup.sh && \
-catkin build --workspace custom_ws
+catkin build --workspace sim_ws
 COPY setup/run_display.bash .
 RUN chmod u+x run_display.bash
 

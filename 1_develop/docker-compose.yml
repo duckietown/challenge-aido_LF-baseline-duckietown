@@ -14,9 +14,8 @@ services:
         - ./catkin_ws:/duckietown/catkin_ws
         - ./notebooks:/duckietown/notebooks
         - ./utils:/duckietown/utils
-        - ./custom:/duckietown/custom
-        - ./custom_ws:/duckietown/custom_ws
-        - ./simulation:/duckietown/simulation
+        - ./sim_ws:/duckietown/custom_ws
+        - ./gym_duckietown:/duckietown/simulation
         - /tmp/.X11-unix:/tmp/.X11-unix
         environment:
         - "ROS_MASTER_URI=http://sim:11311"
@@ -29,10 +28,7 @@ services:
         - "8888:8888"
 
     novnc:
-        image: duckietown/dt-novnc:udem
-        build:
-            context: .
-            dockerfile: DockerfileNoVNC
+        image: duckietown/docker-ros-vnc:daffy
         networks:
         - duckietown-docker-net
         environment:
@@ -54,7 +50,7 @@ services:
         networks:
         - duckietown-docker-net
         volumes:
-        - ./simulation:/duckietown/simulation
+        - ./gym_duckietown:/duckietown/simulation
         - ./utils:/duckietown/utils        
         environment:
         - "ROS_MASTER_URI=http://sim:11311"
