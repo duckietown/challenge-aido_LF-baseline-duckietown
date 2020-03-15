@@ -1,5 +1,4 @@
 zuper-nodes-python2-z5
-cbor2
 SystemCmd==2.2.2
 compmake==3.6.1
 comptests==1.4.27

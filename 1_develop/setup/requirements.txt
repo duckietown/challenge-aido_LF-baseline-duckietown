@@ -7,7 +7,7 @@ pyyaml>=3.11
 cloudpickle
 duckietown_slimremote>=2018.8.2
 pygeometry
-dataclasses
+dataclasses==0.6; python_version < '3.7'
 
 # IPython
 jupyter
