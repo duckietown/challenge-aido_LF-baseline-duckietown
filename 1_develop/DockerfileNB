@@ -28,18 +28,32 @@ RUN echo 'source catkin_ws/devel/setup.bash' >> ~/.bashrc
 
 RUN echo 'echo if you got a message about "catkin_ws/devel/setup.bash does not exist" then you need to build the catkin_ws with "catkin build --workspace catkin_ws" ' >> ~/.bashrc
 
+RUN echo 'echo don't forget to start the car_interface if you haven't already with ./launch_car_interface.sh ' >> ~/.bashrc
+
+COPY setup/launch_car_interface.sh duckietown
+
 ENV ROS_PYTHON_VERSION 3
 ENV SHELL /bin/bash
 ENV DISPLAY :99
 ENV DUCKIEFLEET_ROOT /data/config
+ENV READTHEDOCS True
 
 RUN mkdir -p /data/config
-RUN git clone https://github.com/duckietown-udem/config /data/config
+RUN git clone https://github.com/duckietown/duckiefleet /data/config
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python get-pip.py
 COPY setup/requirementspy2.txt duckietown
 RUN python -m pip install -r duckietown/requirementspy2.txt
+
+RUN mkdir duckietown/dt-ros-commons
+COPY catkin_ws/src/dt-ros-commons/dependencies-py.txt duckietown/dt-ros-commons
+RUN python -m pip install -r duckietown/dt-ros-commons/dependencies-py.txt
+
+RUN mkdir duckietown/dt-core/
+COPY catkin_ws/src/dt-core/dependencies-py.txt duckietown/dt-core
+RUN python -m pip install -r duckietown/dt-core/dependencies-py.txt
+
 
 WORKDIR /duckietown
 CMD  rm -f /tmp/.X99-lock &&  ./run_display.bash &&  jupyter-notebook --allow-root --ip="*" --no-browser 
