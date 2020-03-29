@@ -1,5 +1,7 @@
 #!/usr/bin/env python2
 from __future__ import unicode_literals
+from PIL import Image
+import io
 
 import os
 import time
@@ -79,8 +81,6 @@ class ROSBaselineAgent(object):
 
 def jpg2rgb(image_data):
     """ Reads JPG bytes as RGB"""
-    from PIL import Image
-    import io
     im = Image.open(io.BytesIO(image_data))
     im = im.convert('RGB')
     data = np.array(im)
