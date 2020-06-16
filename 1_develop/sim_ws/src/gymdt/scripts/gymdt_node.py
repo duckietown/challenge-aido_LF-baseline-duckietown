@@ -31,7 +31,7 @@ class ROSAgent(object):
             self.vehicle), CompressedImage, queue_size=10)
 
         # Publisher for camera info - needed for the ground_projection
-        self.cam_info_pub = rospy.Publisher('/{}/camera_info_topic'.format(
+        self.cam_info_pub = rospy.Publisher('/{}/camera_node/camera_info'.format(
             self.vehicle), CameraInfo, queue_size=1)
 
         # Initializes the node
