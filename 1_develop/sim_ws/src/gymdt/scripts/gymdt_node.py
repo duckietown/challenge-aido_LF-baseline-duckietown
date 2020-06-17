@@ -12,6 +12,7 @@ from gymdt.msg import Twist2DStamped, WheelsCmdStamped
 import numpy as np
 import os
 import cv2
+import yaml
 
 
 class ROSAgent(object):
@@ -34,8 +35,39 @@ class ROSAgent(object):
         self.cam_info_pub = rospy.Publisher('/{}/camera_node/camera_info'.format(
             self.vehicle), CameraInfo, queue_size=1)
 
+        self.cam_info = self.load_calibration()
+
         # Initializes the node
         rospy.init_node('GymDuckietown')
+
+    def load_calibration(self):
+        folder = '/data/config/calibrations/camera_intrinsic/'
+        camera_instrinsic_file = folder + rospy.get_namespace().strip("/")+".yaml"
+        # Locate calibration yaml file or use the default otherwise
+        if not os.path.isfile(camera_instrinsic_file):
+            camera_instrinsic_file = (folder + "default.yaml")
+
+        # Shutdown if no calibration file not found
+        if not os.path.isfile(camera_instrinsic_file):
+            msg = 'Found no calibration file ... aborting'
+            rospy.signal_shutdown(msg)
+
+        stream = open(camera_instrinsic_file)
+        try:
+            calib_data = yaml.load(stream)
+        except yaml.YAMLError:
+            rospy.signal_shutdown(msg)
+        cam_info = CameraInfo()
+        cam_info.width = calib_data['image_width']
+        cam_info.height = calib_data['image_height']
+        cam_info.K = calib_data['camera_matrix']['data']
+        cam_info.D = calib_data['distortion_coefficients']['data']
+        cam_info.R = calib_data['rectification_matrix']['data']
+        cam_info.P = calib_data['projection_matrix']['data']
+        cam_info.distortion_model = calib_data['distortion_model']
+        return cam_info
+
+
 
     def _ik_action_cb(self, msg):
         """
@@ -52,7 +84,7 @@ class ROSAgent(object):
         Publishes a default CameraInfo
         """
 
-        self.cam_info_pub.publish(CameraInfo())
+        self.cam_info_pub.publish(self.cam_info)
 
     def publish_img(self, obs):
         """
