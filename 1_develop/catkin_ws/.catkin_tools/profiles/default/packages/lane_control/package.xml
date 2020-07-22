@@ -2,7 +2,7 @@
 <package>
   <name>lane_control</name>
   <version>1.0.0</version>
-  <description>TODO: Add a description of package `lane_control` in `package.xml`.</description>
+  <description>The package containing the lane controller.</description>
 
   <author email="steven@todo.todo">steven</author>
   <author email="syliu@mit.edu">Shih-Yuan Liu</author>
