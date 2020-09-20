@@ -30,6 +30,9 @@ RUN python get-pip.py
 COPY setup/requirementspy2.txt duckietown
 RUN python -m pip install -r duckietown/requirementspy2.txt
 
+RUN mkdir -p /data/config
+RUN git clone https://github.com/duckietown/duckiefleet /data/config
+
 
 WORKDIR /duckietown
 
