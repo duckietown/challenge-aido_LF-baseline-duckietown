@@ -11,7 +11,7 @@ RUN rm -r /workspace; mkdir /workspace
 WORKDIR /workspace
 
 COPY requirements.* ./
-RUN pip install -r requirements.txt
+RUN pip install --use-feature=2020-resolver  -r requirements.txt
 
 # let's copy all our solution files to our workspace
 # if you have more file use the COPY command to move them to the workspace
