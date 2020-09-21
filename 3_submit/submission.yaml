@@ -2,7 +2,7 @@
 #  - aido-LF-sim-testing
 
 protocol: aido2_db18_agent-z2
-user-label: "challenge-aido_LF-baseline-duckietown"
+user-label: "baseline-duckietown"
 user-payload: {}
 description: |
     This is a simple baseline agent that operates through ROS using small portions of the Duckietown stack

@@ -1,6 +1,9 @@
 from dataclasses import dataclass
 from typing import Tuple
+from PIL import Image
+import io
 
+from PIL import Image
 import torch
 import random
 import numpy as np
@@ -11,7 +14,7 @@ import matplotlib.pyplot as plt
 
 from aido_schemas import EpisodeStart, protocol_agent_duckiebot1, PWMCommands, Duckiebot1Commands, LEDSCommands, RGB, \
     wrap_direct, Context, Duckiebot1Observations, JPGImage, Context
-    
+
 from simulation.gym_duckietown.simulator import Simulator
 class AIDOSubmission:
     def __init__(self, exercise='test'):
@@ -53,11 +56,9 @@ def submit_aido(submission):
 
 def jpg2rgb(image_data: bytes) -> np.ndarray:
     """ Reads JPG bytes as RGB"""
-    from PIL import Image
-    import io
     im = Image.open(io.BytesIO(image_data))
     im = im.convert('RGB')
-    data = np.array(im) 
+    data = np.array(im)
     assert data.ndim == 3
     assert data.dtype == np.uint8
     return data
@@ -66,7 +67,7 @@ def launch_env(simclass=None, map_name = "loop_empty"):
     from simulation.gym_duckietown.simulator import Simulator
 
     simclass = Simulator if simclass is None else simclass
-    
+
     env = simclass(
         seed=123, # random seed
         map_name=map_name,#"loop_empty",
@@ -82,7 +83,7 @@ def launch_env(simclass=None, map_name = "loop_empty"):
 
 def change_exercise(exercise='master'):
     from git import Repo
-    
+
     repo = Repo('../simulation')
     repo.git.checkout(exercise)
     print('Exercise successfully changed to', exercise)
@@ -96,7 +97,7 @@ def view_results_ipython(env, results_path='./gym_results'):
     import io
     import base64
     from IPython.display import HTML
-    
+
     video = io.open(os.path.join(results_path, 'openaigym.video.%s.video000000.mp4' % env.file_infix), 'r+b').read()
     encoded = base64.b64encode(video)
     return HTML(data='''
@@ -169,7 +170,6 @@ class ResizeWrapper(gym.ObservationWrapper):
         self.shape = shape
 
     def observation(self, observation):
-        from PIL import Image
         return np.array(Image.fromarray(observation).resize(self.shape[0:2]))
 
 class NormalizeWrapper(gym.ObservationWrapper):
@@ -230,7 +230,7 @@ def plot_poses(poses, goal = False, draw_line=False):
     xmax = np.max(coords[:, 0])
     ymin = np.min(coords[:, 1])
     ymax = np.max(coords[:, 1])
-    
+
     if goal:
         xmin = np.minimum(xmin, goal[0])
         xmax = np.maximum(xmax, goal[0])
@@ -242,7 +242,7 @@ def plot_poses(poses, goal = False, draw_line=False):
         x = p[0][0]
         y = p[0][1]
         arrow_angle = math.radians(p[1])
-        
+
         if i == len(poses) -1:
             plt.arrow(x, y, 0.001 * math.cos(arrow_angle), 0.001 * math.sin(arrow_angle),
                  head_width=0.1, head_length=0.16,
@@ -251,14 +251,14 @@ def plot_poses(poses, goal = False, draw_line=False):
             plt.arrow(x, y, 0.001 * math.cos(arrow_angle), 0.001 * math.sin(arrow_angle),
                  head_width=0.1, head_length=0.16,
                   fc='k', ec='k')
-            
+
     if goal:
         plt.arrow(goal[0], goal[1], 0.001 * math.cos(math.radians(goal[2])), 0.001 * math.sin(math.radians(goal[2])), head_width=0.1, head_length=0.16,
                   fc='g', ec='g')
         final_pose = poses[-1]
         if math.fabs(final_pose[0][0] - goal[0]) < 0.01 and math.fabs(final_pose[0][1] - goal[1]) < 0.01 and math.fabs(final_pose[1] - goal[2]) < 0.1:
             print("Goal achieved! Great job!")
-            
+
     if draw_line:
         plt.hlines(0, 0, xmax, linestyles='dashed', colors='r')
 
@@ -275,7 +275,7 @@ def rotate_point(px, py, cx, cy, theta):
     new_dy = dy * math.cos(theta) + dx * math.sin(theta)
 
     return cx + new_dx, cy + new_dy
-  
+
 def get_dir_vec(angle):
     """
     Vector pointing in the direction the agent is looking (angle in degrees)
@@ -300,7 +300,7 @@ def drive(cur_pos, cur_angle, left_rate, right_rate, wheel_dist, wheel_radius, d
     Drive this bad boy
     """
     cur_pos = np.array(cur_pos)
-    
+
     Vl = left_rate * wheel_radius * np.pi * 2
     Vr = right_rate * wheel_radius * np.pi * 2 # rate is in turns/sec
     l = wheel_dist
@@ -314,7 +314,7 @@ def drive(cur_pos, cur_angle, left_rate, right_rate, wheel_dist, wheel_radius, d
     w = (Vr - Vl) / l
     # Compute the velocity
     v = (Vl + Vr) / 2
-    
+
 
     # Compute the distance to the center of curvature
     r = v/w
@@ -329,7 +329,7 @@ def drive(cur_pos, cur_angle, left_rate, right_rate, wheel_dist, wheel_radius, d
     cy = py + r * r_vec[1]
     npx, npy = rotate_point(px, py, cx, cy, rotAngle)
     next_pos = np.array([npx, npy])
-   
+
     # Update the robot's direction angle
     next_angle = cur_angle + math.degrees(rotAngle)
     return next_pos, next_angle
@@ -338,28 +338,28 @@ def calibrate_drive(cur_pos, cur_angle, gain, trim, dt, seed):
     limit = 1
     l = 0.2                  # 0.2 meters of distance between the wheels
     wheel_radius = 0.03      # radius of the wheels is 0.03 meters (3 cm) as we know it
-    
+
     desired_rate = 1                           # Turns per second
     desired_omega = 2*np.pi * desired_rate     # In radians
-    
+
     desired_omega_r = desired_omega
     desired_omega_l = desired_omega
-       
-    
+
+
     k = 27                                     # Motor constant as we know it
-    
+
     k_r_inv = (gain + trim) / k                # Inverse motor constant after trim
-    k_l_inv = (gain - trim) / k                
-    
-    
+    k_l_inv = (gain - trim) / k
+
+
     # conversion from motor rotation rate to duty cycle, according to what we know
     u_r = desired_omega_r * k_r_inv
     u_l = desired_omega_l * k_l_inv
-    
+
     # limiting output to limit, which is 1.0 for the duckiebot
     u_r_limited = max(min(u_r, limit), -limit)
     u_l_limited = max(min(u_l, limit), -limit)
-    
+
     # Modelling the real values of radius and motor constants
     np.random.seed(seed)
     radius_r = np.random.uniform(wheel_radius - 0.0015, wheel_radius + 0.0015)
@@ -374,18 +374,18 @@ def calibrate_drive(cur_pos, cur_angle, gain, trim, dt, seed):
     # Real values of wheel angular velocity
     omega_r_limited = u_r_limited/k_r_inv_noisy
     omega_l_limited = u_l_limited/k_l_inv_noisy
-    
+
     # Real wheel velocities
     Vr = omega_r_limited * radius_r
     Vl = omega_l_limited * radius_l
-    
+
 
     # If the wheel velocities are the same, then there is no rotation
     if Vl == Vr:
         cur_pos = cur_pos + dt * Vr * get_dir_vec(cur_angle)
         return cur_pos, cur_angle
 
-    
+
     # Compute the angular rotation velocity about the ICC (center of curvature)
     w = (Vr - Vl) / l
     # Compute the velocity
@@ -404,14 +404,14 @@ def calibrate_drive(cur_pos, cur_angle, gain, trim, dt, seed):
     cy = py + r * r_vec[1]
     npx, npy = rotate_point(px, py, cx, cy, rotAngle)
     next_pos = np.array([npx, npy])
-   
+
     # Update the robot's direction angle
     next_angle = cur_angle + math.degrees(rotAngle)
-    
+
     return next_pos, next_angle
 
 class topViewSimulator(Simulator):
-    
+
     def step(self, action: np.ndarray):
         action = np.clip(action, -1, 1)
         # Actions could be a Python list
@@ -425,7 +425,7 @@ class topViewSimulator(Simulator):
                 self.multi_fbo,
                 self.final_fbo,
                 np.zeros(shape=self.observation_space.shape, dtype=np.uint8),
-                top_down=True)        
+                top_down=True)
         misc = self.get_agent_info()
 
         d = self._compute_done_reward()
@@ -441,7 +441,7 @@ def load_env_obstacles(local_env):
         robot_radius = 0.1
         radius = obstacle.safety_radius + robot_radius
         list_obstacles.append([pose[0], pose[2], radius])
-    
+
     ###### Non drivable tiles
     for i in range(local_env.grid_width):
         for j in range(local_env.grid_height):
@@ -489,6 +489,6 @@ def proportional_next_point_controller(local_env, new_path):
             print("Crash")
             return d
     return d
-            
+
 def get_dist_to_goal(cur_pos, goal):
     return math.sqrt((cur_pos[0] - goal[0])**2 + (cur_pos[2] - goal[1])**2)
