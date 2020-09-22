@@ -11,16 +11,16 @@ This is a template for one of the challenges in the [the AI Driving Olympics](ht
 
 For submitting, please follow [the instructions available in the book][book].
  
-[book]: http://docs.duckietown.org/DT19/AIDO/out/
+[book]: https://docs.duckietown.org/daffy/AIDO/out/
 
-[lf]: http://docs.duckietown.org/DT19/AIDO/out/lf.html
+[lf]: https://docs.duckietown.org/daffy/AIDO/out/lf.html
 
-[lfv]: http://docs.duckietown.org/DT19/AIDO/out/lf_v.html
+[lfv]: https://docs.duckietown.org/daffy/AIDO/out/lf_v.html
 
-[lfvi]: http://docs.duckietown.org/DT19/AIDO/out/lf_v_i.html
+[lfvi]: https://docs.duckietown.org/daffy/AIDO/out/lf_v_i.html
 
 ## Description
 
 This is a simple template for an ROS agent that does Lane Following with the Duckietown stack.
 
-[This code is documented here](https://docs.duckietown.org/DT19/AIDO/out/ros_baseline.html).
+[This code is documented here](https://docs.duckietown.org/daffy/AIDO/out/ros_baseline.html).
