@@ -9,7 +9,7 @@ workflows:
 jobs:
   submit:
     docker:
-      - image: staging-registry.duckietown.org:9443/duckietown/aido-submission-ci-test:daffy
+      - image: registry-stage.duckietown.org/duckietown/aido-submission-ci-test:daffy
     steps:
       - checkout
       - setup_remote_docker:
