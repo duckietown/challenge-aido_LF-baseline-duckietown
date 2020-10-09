@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 from __future__ import unicode_literals
 from PIL import Image
 import io
@@ -9,49 +9,39 @@ import time
 import numpy as np
 import roslaunch
 from rosagent import ROSAgent
-
-from zuper_nodes_python2 import logger, wrap_direct
+from aido_schemas import (Context, Duckiebot1Commands, Duckiebot1Observations, EpisodeStart,
+                          GetCommands, LEDSCommands, protocol_agent_duckiebot1, PWMCommands, RGB, wrap_direct)
 
 
 class ROSBaselineAgent(object):
     def __init__(self):
-        logger.info('started __init__()')
         # Now, initialize the ROS stuff here:
 
         # logger.info('Configuring logging')
         uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
         # roslaunch.configure_logging(uuid)
-        # print('configured logging 2')
         roslaunch_path = os.path.join(os.getcwd(), "lf_slim.launch")
-        logger.info('Creating ROSLaunchParent')
         self.launch = roslaunch.parent.ROSLaunchParent(uuid, [roslaunch_path])
-
-        logger.info('about to call start()')
-
         self.launch.start()
-        logger.info('returning from start()')
-
         # Start the ROSAgent, which handles publishing images and subscribing to action
-        logger.info('starting ROSAgent()')
         self.agent = ROSAgent()
-        logger.info('started ROSAgent()')
 
-        logger.info('completed __init__()')
+    def init(self, context: Context):
+        context.info("init()")
 
-    def on_received_seed(self, context, data):
+    def on_received_seed(self, context: Context, data: int):
         np.random.seed(data)
 
-    def on_received_episode_start(self, context, data):
+    def on_received_episode_start(self, context: Context, data: EpisodeStart):
         context.info('Starting episode %s.' % data)
 
-    def on_received_observations(self, context, data):
-        logger.info("received observation")
+    def on_received_observations(self, context: Context, data: Duckiebot1Observations):
         jpg_data = data['camera']['jpg_data']
         obs = jpg2rgb(jpg_data)
         self.agent._publish_img(obs)
         self.agent._publish_info()
 
-    def on_received_get_commands(self, context, data):
+    def on_received_get_commands(self, context: Context, data: GetCommands):
         while not self.agent.updated:
             time.sleep(0.01)
 
@@ -91,4 +81,4 @@ def jpg2rgb(image_data):
 
 if __name__ == '__main__':
     agent = ROSBaselineAgent()
-    wrap_direct(agent)
+    wrap_direct(agent, protocol_agent_duckiebot1)

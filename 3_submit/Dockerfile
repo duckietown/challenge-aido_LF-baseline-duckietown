@@ -7,8 +7,7 @@ ARG BASE_TAG=${MAJOR}-${ARCH}
 # We start from the ROS Template
 FROM duckietown/challenge-aido_lf-template-ros:${BASE_TAG}
 
-RUN rm -r /workspace; mkdir /workspace
-WORKDIR /workspace
+WORKDIR /code
 
 COPY requirements.* ./
 RUN pip install -U pip>=20.2
@@ -45,12 +44,12 @@ ENV VEHICLE_NAME=default
 ENV ROS_HOSTNAME=localhost
 ENV ROS_MASTER_URI=http://localhost:11311
 
-ENV DUCKIEFLEET_ROOT /data/config
+# ENV DUCKIEFLEET_ROOT /data/config
 
-RUN mkdir -p /data/config
-RUN git clone https://github.com/duckietown/duckiefleet.git /data/config
+# RUN mkdir -p /data/config
+# RUN git clone https://github.com/duckietown/duckiefleet.git /data/config
 
 # let's see what you've got there...
-CMD ["python", "solution.py"]
+CMD ["python3", "solution.py"]
 ## Uncomment this and comment out the above command to run your own packages.
 # CMD ["/bin/bash", "-c", "source custom_ws/devel/setup.bash && python solution.py"]

@@ -25,14 +25,13 @@
                     <arg name="veh" value="$(arg veh)"/>
                     <!-- NOTE: "line_detector_param_file_name" as special case -->
                     <arg name="param_file_name" value="$(arg line_detector_param_file_name)"/>
-                    <arg name="verbose" value="$(arg verbose)" />
                 </include>
             </group>
 
         <!-- Ground Projection -->
         <group if="$(arg /lane_following/ground_projection)">
                 <remap from="~lineseglist_in" to="line_detector_node/segment_list"/>
-                <include file="$(find ground_projection)/launch/ground_projection.launch">
+                <include file="$(find ground_projection)/launch/ground_projection_node.launch">
                     <arg name="veh" value="$(arg veh)"/>
                     <arg name="param_file_name" value="$(arg param_file_name)"/>
                 </include>
@@ -60,16 +59,16 @@
             </include>
         </group>
 
-	<group if="$(arg visualization)">
-          <remap from="duckiebot_visualizer/segment_list" to="ground_projection/lineseglist_out"/>
-          <include file="$(find duckiebot_visualizer)/launch/duckiebot_visualizer.launch">
-            <arg name="veh" value="$(arg veh)" />
-          </include>
+        <group if="$(arg visualization)">
+            <remap from="visualization_tools/segment_list" to="ground_projection/lineseglist_out"/>
+            <include file="$(find visualization_tools)/launch/line_segment_visualizer_node.launch">
+                <arg name="veh" value="$(arg veh)" />
+            </include>
         </group>
 
         
         <group if="$(arg visualization)">
-          <include file="$(find lane_filter)/launch/lane_pose_visualizer_node.launch">
+          <include file="$(find visualization_tools)/launch/lane_pose_visualizer_node.launch">
             <arg name="veh" value="$(arg veh)"/>
           </include>
         </group>
