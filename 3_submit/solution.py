@@ -36,33 +36,25 @@ class ROSBaselineAgent(object):
         context.info('Starting episode %s.' % data)
 
     def on_received_observations(self, context: Context, data: Duckiebot1Observations):
-        jpg_data = data['camera']['jpg_data']
+        jpg_data = data.camera.jpg_data
         obs = jpg2rgb(jpg_data)
         self.agent._publish_img(obs)
         self.agent._publish_info()
 
     def on_received_get_commands(self, context: Context, data: GetCommands):
-        while not self.agent.updated:
-            time.sleep(0.01)
+        print(f"Received get_command instate updated: {self.agent.updated}", flush=True)
+        # while not self.agent.updated:
+        #     time.sleep(0.01)
 
         pwm_left, pwm_right = self.agent.action
         self.agent.updated = False
 
-        rgb = {'r': 0.5, 'g': 0.5, 'b': 0.5}
-        commands = {
-            'wheels': {
-                'motor_left': pwm_left,
-                'motor_right': pwm_right
-            },
-            'LEDS': {
-                'center': rgb,
-                'front_left': rgb,
-                'front_right': rgb,
-                'back_left': rgb,
-                'back_right': rgb
+        print(f"sending action {self.agent.action}", flush=True)
+        grey = RGB(0.5, 0.5, 0.5)
+        led_commands = LEDSCommands(grey, grey, grey, grey, grey)
+        pwm_commands = PWMCommands(motor_left=pwm_left, motor_right=pwm_right)
+        commands = Duckiebot1Commands(pwm_commands, led_commands)
 
-            }
-        }
         context.write('commands', commands)
 
     def finish(self, context):

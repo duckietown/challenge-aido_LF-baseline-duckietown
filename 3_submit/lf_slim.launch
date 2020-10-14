@@ -20,7 +20,11 @@
         <!-- Line Detector -->
         <group if="$(arg /lane_following/line_detection)">
                 <remap from="line_detector_node/transform" to="anti_instagram_node/transform"/>
-                <remap from="line_detector_node/corrected_image/compressed" to="camera_node/image/compressed"/>
+                <!-- <remap from="line_detector_node/corrected_image/compressed" to="camera_node/image/compressed"/> -->
+                <remap from="line_detector_node/image/compressed" to="camera_node/image/compressed"/>
+                <remap from="line_detector_node/thresholds" to="anti_instagram_node/thresholds"/>
+
+
                 <include file="$(find line_detector)/launch/line_detector_node.launch">
                     <arg name="veh" value="$(arg veh)"/>
                     <!-- NOTE: "line_detector_param_file_name" as special case -->
@@ -30,7 +34,10 @@
 
         <!-- Ground Projection -->
         <group if="$(arg /lane_following/ground_projection)">
+                <!-- <remap from="~lineseglist_in" to="line_detector_node/segment_list"/> -->
                 <remap from="~lineseglist_in" to="line_detector_node/segment_list"/>
+                <remap from="~cali_image" to="camera_node/image/raw"/>
+                <remap from="~camera_info" to="camera_node/camera_info"/>
                 <include file="$(find ground_projection)/launch/ground_projection_node.launch">
                     <arg name="veh" value="$(arg veh)"/>
                     <arg name="param_file_name" value="$(arg param_file_name)"/>
@@ -40,8 +47,11 @@
 
         <!-- Lane Filter -->
         <group if="$(arg /lane_following/lane_filter)">
-            <remap from="lane_filter_node/segment_list" to="ground_projection/lineseglist_out"/>
-            <remap from="lane_filter_node/car_cmd" to="/$(arg veh)/car_cmd"/>
+            <!-- <remap from="lane_filter_node/segment_list" to="ground_projection/lineseglist_out"/>
+            <remap from="lane_filter_node/car_cmd" to="/$(arg veh)/car_cmd"/> -->
+            <remap from="lane_filter_node/segment_list" to="ground_projection_node/lineseglist_out"/>
+            <remap from="lane_filter_node/car_cmd" to="car_cmd_switch_node/cmd"/>
+            <remap from="lane_filter_node/fsm_mode" to="fsm_node/mode" />
             <include file="$(find lane_filter)/launch/lane_filter_node.launch">
                 <arg name="veh" value="$(arg veh)"/>
                 <arg name="param_file_name" value="$(arg param_file_name)"/>
@@ -50,9 +60,15 @@
 
         <!-- Lane controller -->
         <group if="$(arg /lane_following/lane_controller)">
-            <remap from="lane_controller_node/lane_pose" to="lane_filter_node/lane_pose"/>
-            <remap from="lane_controller_node/wheels_cmd_executed" to="wheels_driver_node/wheels_cmd_executed" />
+            <!-- <remap from="lane_controller_node/lane_pose" to="lane_filter_node/lane_pose"/>
+            <remap from="lane_controller_node/wheels_cmd_executed" to="wheels_driver_node/wheels_cmd_executed" /> -->
             <remap from="lane_controller_node/actuator_limits" to="inverse_kinematics_node/actuator_limits" />
+
+             <remap from="lane_controller_node/lane_pose" to="lane_filter_node/lane_pose"/>
+            <remap from="lane_controller_node/wheels_cmd_executed" to="wheels_driver_node/wheels_cmd_executed" />
+            <remap from="lane_controller_node/fsm_mode" to="fsm_node/mode" />
+            <remap from="lane_controller_node/stop_line_reading" to="stop_line_filter_node/stop_line_reading" />
+            <remap from="wheels_driver_node/radius_limit" to="lane_controller_node/radius_limit" />
             <include file="$(find lane_control)/launch/lane_controller_node.launch">
                 <arg name="veh" value="$(arg veh)"/>
                 <!-- <arg name="param_file_name" value="$(arg param_file_name)"/> -->
