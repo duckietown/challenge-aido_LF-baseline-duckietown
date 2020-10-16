@@ -4,16 +4,13 @@ from duckietown_msgs.msg import WheelsCmdStamped
 import numpy as np
 import os
 import cv2
-from zuper_nodes_python2 import logger
 
 
 class ROSAgent(object):
     def __init__(self):
-        logger.info('ROSAgent::__init__ starts')
         # Get the vehicle name, which comes in as HOSTNAME
         self.vehicle = os.getenv('HOSTNAME')
 
-        logger.info('Creating subscriber')
         # Subscribes to the output of the lane_controller_node
         self.ik_action_sub = rospy.Subscriber('/{}/wheels_driver_node/wheels_cmd'.format(
             self.vehicle), WheelsCmdStamped, self._ik_action_cb)
@@ -25,7 +22,6 @@ class ROSAgent(object):
 
         # Publishes onto the corrected image topic
         # since image out of simulator is currently rectified
-        logger.info('creating publishers')
         self.cam_pub = rospy.Publisher('/{}/camera_node/image/compressed'.format(
             self.vehicle), CompressedImage, queue_size=10)
 
@@ -34,18 +30,15 @@ class ROSAgent(object):
             self.vehicle), CameraInfo, queue_size=1)
 
         # Initializes the node
-        logger.info('Calling init_node')
         try:
             # rospy.init_node('ROSAgent', disable_signals=True)
             rospy.init_node('ROSAgent')
         except BaseException as e:
-            logger.info('exception in init_node: %s' % e)
             raise
 
         # 15Hz ROS Cycle - TODO: What is this number?
         self.r = rospy.Rate(15)
 
-        logger.info('ROSAgent::__init__ complete.')
 
     def _ik_action_cb(self, msg):
         """
@@ -67,7 +60,6 @@ class ROSAgent(object):
         """
         Publishes the image to the compressed_image topic, which triggers the lane following loop
         """
-        logger.info("got image")
         img_msg = CompressedImage()
 
         time = rospy.get_rostime()
