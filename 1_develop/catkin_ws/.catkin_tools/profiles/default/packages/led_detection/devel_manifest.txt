@@ -1,6 +1,0 @@
-dt-core/packages/led_detection
-/duckietown/catkin_ws/devel/.private/led_detection/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/led_detection/lib/pkgconfig/led_detection.pc /duckietown/catkin_ws/devel/lib/pkgconfig/led_detection.pc
-/duckietown/catkin_ws/devel/.private/led_detection/lib/python2.7/dist-packages/led_detection/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/led_detection/__init__.py
-/duckietown/catkin_ws/devel/.private/led_detection/share/led_detection/cmake/led_detectionConfig-version.cmake /duckietown/catkin_ws/devel/share/led_detection/cmake/led_detectionConfig-version.cmake
-/duckietown/catkin_ws/devel/.private/led_detection/share/led_detection/cmake/led_detectionConfig.cmake /duckietown/catkin_ws/devel/share/led_detection/cmake/led_detectionConfig.cmake

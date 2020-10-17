@@ -1,5 +1,0 @@
-dt-core/packages/duckietown_demos
-/duckietown/catkin_ws/devel/.private/duckietown_demos/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/duckietown_demos/lib/pkgconfig/duckietown_demos.pc /duckietown/catkin_ws/devel/lib/pkgconfig/duckietown_demos.pc
-/duckietown/catkin_ws/devel/.private/duckietown_demos/share/duckietown_demos/cmake/duckietown_demosConfig.cmake /duckietown/catkin_ws/devel/share/duckietown_demos/cmake/duckietown_demosConfig.cmake
-/duckietown/catkin_ws/devel/.private/duckietown_demos/share/duckietown_demos/cmake/duckietown_demosConfig-version.cmake /duckietown/catkin_ws/devel/share/duckietown_demos/cmake/duckietown_demosConfig-version.cmake

@@ -1,5 +1,0 @@
-dt-core/packages/indefinite_navigation
-/duckietown/catkin_ws/devel/.private/indefinite_navigation/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/indefinite_navigation/lib/pkgconfig/indefinite_navigation.pc /duckietown/catkin_ws/devel/lib/pkgconfig/indefinite_navigation.pc
-/duckietown/catkin_ws/devel/.private/indefinite_navigation/share/indefinite_navigation/cmake/indefinite_navigationConfig.cmake /duckietown/catkin_ws/devel/share/indefinite_navigation/cmake/indefinite_navigationConfig.cmake
-/duckietown/catkin_ws/devel/.private/indefinite_navigation/share/indefinite_navigation/cmake/indefinite_navigationConfig-version.cmake /duckietown/catkin_ws/devel/share/indefinite_navigation/cmake/indefinite_navigationConfig-version.cmake

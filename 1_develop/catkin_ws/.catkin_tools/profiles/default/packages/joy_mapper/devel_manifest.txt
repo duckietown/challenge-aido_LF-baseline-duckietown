@@ -1,5 +1,0 @@
-dt-car-interface/packages/joy_mapper
-/duckietown/catkin_ws/devel/.private/joy_mapper/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/joy_mapper/lib/pkgconfig/joy_mapper.pc /duckietown/catkin_ws/devel/lib/pkgconfig/joy_mapper.pc
-/duckietown/catkin_ws/devel/.private/joy_mapper/share/joy_mapper/cmake/joy_mapperConfig.cmake /duckietown/catkin_ws/devel/share/joy_mapper/cmake/joy_mapperConfig.cmake
-/duckietown/catkin_ws/devel/.private/joy_mapper/share/joy_mapper/cmake/joy_mapperConfig-version.cmake /duckietown/catkin_ws/devel/share/joy_mapper/cmake/joy_mapperConfig-version.cmake

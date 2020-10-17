@@ -1,6 +1,0 @@
-dt-core/packages/apriltags2_ros/apriltags2
-/duckietown/catkin_ws/devel/.private/apriltags2/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/apriltags2/lib/libapriltags2.so /duckietown/catkin_ws/devel/lib/libapriltags2.so
-/duckietown/catkin_ws/devel/.private/apriltags2/lib/pkgconfig/apriltags2.pc /duckietown/catkin_ws/devel/lib/pkgconfig/apriltags2.pc
-/duckietown/catkin_ws/devel/.private/apriltags2/share/apriltags2/cmake/apriltags2Config.cmake /duckietown/catkin_ws/devel/share/apriltags2/cmake/apriltags2Config.cmake
-/duckietown/catkin_ws/devel/.private/apriltags2/share/apriltags2/cmake/apriltags2Config-version.cmake /duckietown/catkin_ws/devel/share/apriltags2/cmake/apriltags2Config-version.cmake

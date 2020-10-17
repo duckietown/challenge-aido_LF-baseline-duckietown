@@ -1,8 +1,0 @@
-dt-ros-commons/packages/duckietown
-/duckietown/catkin_ws/devel/.private/duckietown/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/duckietown/lib/pkgconfig/duckietown.pc /duckietown/catkin_ws/devel/lib/pkgconfig/duckietown.pc
-/duckietown/catkin_ws/devel/.private/duckietown/lib/python2.7/dist-packages/duckietown_utils_tests/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/duckietown_utils_tests/__init__.py
-/duckietown/catkin_ws/devel/.private/duckietown/lib/python2.7/dist-packages/duckietown_utils/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/duckietown_utils/__init__.py
-/duckietown/catkin_ws/devel/.private/duckietown/lib/python2.7/dist-packages/duckietown/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/duckietown/__init__.py
-/duckietown/catkin_ws/devel/.private/duckietown/share/duckietown/cmake/duckietownConfig-version.cmake /duckietown/catkin_ws/devel/share/duckietown/cmake/duckietownConfig-version.cmake
-/duckietown/catkin_ws/devel/.private/duckietown/share/duckietown/cmake/duckietownConfig.cmake /duckietown/catkin_ws/devel/share/duckietown/cmake/duckietownConfig.cmake

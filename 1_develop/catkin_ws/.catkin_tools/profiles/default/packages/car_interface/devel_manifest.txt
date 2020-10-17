@@ -1,5 +1,0 @@
-dt-car-interface/packages/car_interface
-/duckietown/catkin_ws/devel/.private/car_interface/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/car_interface/lib/pkgconfig/car_interface.pc /duckietown/catkin_ws/devel/lib/pkgconfig/car_interface.pc
-/duckietown/catkin_ws/devel/.private/car_interface/share/car_interface/cmake/car_interfaceConfig-version.cmake /duckietown/catkin_ws/devel/share/car_interface/cmake/car_interfaceConfig-version.cmake
-/duckietown/catkin_ws/devel/.private/car_interface/share/car_interface/cmake/car_interfaceConfig.cmake /duckietown/catkin_ws/devel/share/car_interface/cmake/car_interfaceConfig.cmake

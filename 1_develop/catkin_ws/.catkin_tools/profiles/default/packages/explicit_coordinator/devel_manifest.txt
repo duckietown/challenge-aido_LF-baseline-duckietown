@@ -1,6 +1,0 @@
-dt-core/packages/explicit_coordinator
-/duckietown/catkin_ws/devel/.private/explicit_coordinator/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/explicit_coordinator/lib/pkgconfig/explicit_coordinator.pc /duckietown/catkin_ws/devel/lib/pkgconfig/explicit_coordinator.pc
-/duckietown/catkin_ws/devel/.private/explicit_coordinator/lib/python2.7/dist-packages/vehcoordinator/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/vehcoordinator/__init__.py
-/duckietown/catkin_ws/devel/.private/explicit_coordinator/share/explicit_coordinator/cmake/explicit_coordinatorConfig.cmake /duckietown/catkin_ws/devel/share/explicit_coordinator/cmake/explicit_coordinatorConfig.cmake
-/duckietown/catkin_ws/devel/.private/explicit_coordinator/share/explicit_coordinator/cmake/explicit_coordinatorConfig-version.cmake /duckietown/catkin_ws/devel/share/explicit_coordinator/cmake/explicit_coordinatorConfig-version.cmake

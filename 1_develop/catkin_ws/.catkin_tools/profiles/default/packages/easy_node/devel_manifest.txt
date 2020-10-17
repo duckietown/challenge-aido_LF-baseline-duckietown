@@ -1,7 +1,0 @@
-dt-core/packages/easy_node
-/duckietown/catkin_ws/devel/.private/easy_node/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/easy_node/lib/pkgconfig/easy_node.pc /duckietown/catkin_ws/devel/lib/pkgconfig/easy_node.pc
-/duckietown/catkin_ws/devel/.private/easy_node/lib/python2.7/dist-packages/easy_node_tests/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/easy_node_tests/__init__.py
-/duckietown/catkin_ws/devel/.private/easy_node/lib/python2.7/dist-packages/easy_node/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/easy_node/__init__.py
-/duckietown/catkin_ws/devel/.private/easy_node/share/easy_node/cmake/easy_nodeConfig-version.cmake /duckietown/catkin_ws/devel/share/easy_node/cmake/easy_nodeConfig-version.cmake
-/duckietown/catkin_ws/devel/.private/easy_node/share/easy_node/cmake/easy_nodeConfig.cmake /duckietown/catkin_ws/devel/share/easy_node/cmake/easy_nodeConfig.cmake

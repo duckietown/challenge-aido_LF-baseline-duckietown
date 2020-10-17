@@ -1,6 +1,0 @@
-dt-core/packages/led_interpreter
-/duckietown/catkin_ws/devel/.private/led_interpreter/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/led_interpreter/lib/pkgconfig/led_interpreter.pc /duckietown/catkin_ws/devel/lib/pkgconfig/led_interpreter.pc
-/duckietown/catkin_ws/devel/.private/led_interpreter/lib/python2.7/dist-packages/led_interpreter/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/led_interpreter/__init__.py
-/duckietown/catkin_ws/devel/.private/led_interpreter/share/led_interpreter/cmake/led_interpreterConfig-version.cmake /duckietown/catkin_ws/devel/share/led_interpreter/cmake/led_interpreterConfig-version.cmake
-/duckietown/catkin_ws/devel/.private/led_interpreter/share/led_interpreter/cmake/led_interpreterConfig.cmake /duckietown/catkin_ws/devel/share/led_interpreter/cmake/led_interpreterConfig.cmake

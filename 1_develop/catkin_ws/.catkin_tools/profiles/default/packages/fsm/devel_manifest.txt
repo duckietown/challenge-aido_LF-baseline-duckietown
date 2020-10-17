@@ -1,6 +1,0 @@
-dt-core/packages/fsm
-/duckietown/catkin_ws/devel/.private/fsm/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/fsm/lib/pkgconfig/fsm.pc /duckietown/catkin_ws/devel/lib/pkgconfig/fsm.pc
-/duckietown/catkin_ws/devel/.private/fsm/lib/python2.7/dist-packages/fsm/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/fsm/__init__.py
-/duckietown/catkin_ws/devel/.private/fsm/share/fsm/cmake/fsmConfig-version.cmake /duckietown/catkin_ws/devel/share/fsm/cmake/fsmConfig-version.cmake
-/duckietown/catkin_ws/devel/.private/fsm/share/fsm/cmake/fsmConfig.cmake /duckietown/catkin_ws/devel/share/fsm/cmake/fsmConfig.cmake

@@ -1,6 +1,0 @@
-dt-core/packages/line_detector
-/duckietown/catkin_ws/devel/.private/line_detector/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/line_detector/lib/pkgconfig/line_detector.pc /duckietown/catkin_ws/devel/lib/pkgconfig/line_detector.pc
-/duckietown/catkin_ws/devel/.private/line_detector/lib/python2.7/dist-packages/line_detector/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/line_detector/__init__.py
-/duckietown/catkin_ws/devel/.private/line_detector/share/line_detector/cmake/line_detectorConfig.cmake /duckietown/catkin_ws/devel/share/line_detector/cmake/line_detectorConfig.cmake
-/duckietown/catkin_ws/devel/.private/line_detector/share/line_detector/cmake/line_detectorConfig-version.cmake /duckietown/catkin_ws/devel/share/line_detector/cmake/line_detectorConfig-version.cmake

@@ -1,5 +1,0 @@
-dt-core/packages/led_joy_mapper
-/duckietown/catkin_ws/devel/.private/led_joy_mapper/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/led_joy_mapper/lib/pkgconfig/led_joy_mapper.pc /duckietown/catkin_ws/devel/lib/pkgconfig/led_joy_mapper.pc
-/duckietown/catkin_ws/devel/.private/led_joy_mapper/share/led_joy_mapper/cmake/led_joy_mapperConfig-version.cmake /duckietown/catkin_ws/devel/share/led_joy_mapper/cmake/led_joy_mapperConfig-version.cmake
-/duckietown/catkin_ws/devel/.private/led_joy_mapper/share/led_joy_mapper/cmake/led_joy_mapperConfig.cmake /duckietown/catkin_ws/devel/share/led_joy_mapper/cmake/led_joy_mapperConfig.cmake

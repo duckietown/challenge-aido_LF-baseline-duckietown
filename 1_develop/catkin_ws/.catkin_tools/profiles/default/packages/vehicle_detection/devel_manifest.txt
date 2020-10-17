@@ -1,6 +1,0 @@
-dt-core/packages/vehicle_detection
-/duckietown/catkin_ws/devel/.private/vehicle_detection/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/vehicle_detection/lib/pkgconfig/vehicle_detection.pc /duckietown/catkin_ws/devel/lib/pkgconfig/vehicle_detection.pc
-/duckietown/catkin_ws/devel/.private/vehicle_detection/lib/python2.7/dist-packages/vehicle_detection/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/vehicle_detection/__init__.py
-/duckietown/catkin_ws/devel/.private/vehicle_detection/share/vehicle_detection/cmake/vehicle_detectionConfig.cmake /duckietown/catkin_ws/devel/share/vehicle_detection/cmake/vehicle_detectionConfig.cmake
-/duckietown/catkin_ws/devel/.private/vehicle_detection/share/vehicle_detection/cmake/vehicle_detectionConfig-version.cmake /duckietown/catkin_ws/devel/share/vehicle_detection/cmake/vehicle_detectionConfig-version.cmake

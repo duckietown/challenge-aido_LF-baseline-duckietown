@@ -1,6 +1,0 @@
-dt-core/packages/lane_control
-/duckietown/catkin_ws/devel/.private/lane_control/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/lane_control/lib/pkgconfig/lane_control.pc /duckietown/catkin_ws/devel/lib/pkgconfig/lane_control.pc
-/duckietown/catkin_ws/devel/.private/lane_control/lib/python2.7/dist-packages/lane_controller/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/lane_controller/__init__.py
-/duckietown/catkin_ws/devel/.private/lane_control/share/lane_control/cmake/lane_controlConfig.cmake /duckietown/catkin_ws/devel/share/lane_control/cmake/lane_controlConfig.cmake
-/duckietown/catkin_ws/devel/.private/lane_control/share/lane_control/cmake/lane_controlConfig-version.cmake /duckietown/catkin_ws/devel/share/lane_control/cmake/lane_controlConfig-version.cmake

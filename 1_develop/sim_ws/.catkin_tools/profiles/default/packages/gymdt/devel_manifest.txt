@@ -1,5 +1,0 @@
-gymdt
-/duckietown/custom_ws/devel/.private/gymdt/cmake.lock /duckietown/custom_ws/devel/./cmake.lock
-/duckietown/custom_ws/devel/.private/gymdt/lib/pkgconfig/gymdt.pc /duckietown/custom_ws/devel/lib/pkgconfig/gymdt.pc
-/duckietown/custom_ws/devel/.private/gymdt/share/gymdt/cmake/gymdtConfig.cmake /duckietown/custom_ws/devel/share/gymdt/cmake/gymdtConfig.cmake
-/duckietown/custom_ws/devel/.private/gymdt/share/gymdt/cmake/gymdtConfig-version.cmake /duckietown/custom_ws/devel/share/gymdt/cmake/gymdtConfig-version.cmake

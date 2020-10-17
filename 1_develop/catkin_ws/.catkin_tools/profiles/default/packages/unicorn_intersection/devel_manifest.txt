@@ -1,5 +1,0 @@
-dt-core/packages/unicorn_intersection
-/duckietown/catkin_ws/devel/.private/unicorn_intersection/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/unicorn_intersection/lib/pkgconfig/unicorn_intersection.pc /duckietown/catkin_ws/devel/lib/pkgconfig/unicorn_intersection.pc
-/duckietown/catkin_ws/devel/.private/unicorn_intersection/share/unicorn_intersection/cmake/unicorn_intersectionConfig.cmake /duckietown/catkin_ws/devel/share/unicorn_intersection/cmake/unicorn_intersectionConfig.cmake
-/duckietown/catkin_ws/devel/.private/unicorn_intersection/share/unicorn_intersection/cmake/unicorn_intersectionConfig-version.cmake /duckietown/catkin_ws/devel/share/unicorn_intersection/cmake/unicorn_intersectionConfig-version.cmake

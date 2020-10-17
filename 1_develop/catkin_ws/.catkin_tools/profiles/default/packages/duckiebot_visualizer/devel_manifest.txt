@@ -1,6 +1,0 @@
-dt-core/packages/duckiebot_visualizer
-/duckietown/catkin_ws/devel/.private/duckiebot_visualizer/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/duckiebot_visualizer/lib/pkgconfig/duckiebot_visualizer.pc /duckietown/catkin_ws/devel/lib/pkgconfig/duckiebot_visualizer.pc
-/duckietown/catkin_ws/devel/.private/duckiebot_visualizer/lib/python2.7/dist-packages/duckiebot_visualizer/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/duckiebot_visualizer/__init__.py
-/duckietown/catkin_ws/devel/.private/duckiebot_visualizer/share/duckiebot_visualizer/cmake/duckiebot_visualizerConfig.cmake /duckietown/catkin_ws/devel/share/duckiebot_visualizer/cmake/duckiebot_visualizerConfig.cmake
-/duckietown/catkin_ws/devel/.private/duckiebot_visualizer/share/duckiebot_visualizer/cmake/duckiebot_visualizerConfig-version.cmake /duckietown/catkin_ws/devel/share/duckiebot_visualizer/cmake/duckiebot_visualizerConfig-version.cmake

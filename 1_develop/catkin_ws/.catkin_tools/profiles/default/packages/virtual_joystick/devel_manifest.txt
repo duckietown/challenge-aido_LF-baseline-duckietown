@@ -1,6 +1,0 @@
-dt-core/packages/virtual_joystick
-/duckietown/catkin_ws/devel/.private/virtual_joystick/cmake.lock /duckietown/catkin_ws/devel/./cmake.lock
-/duckietown/catkin_ws/devel/.private/virtual_joystick/lib/pkgconfig/virtual_joystick.pc /duckietown/catkin_ws/devel/lib/pkgconfig/virtual_joystick.pc
-/duckietown/catkin_ws/devel/.private/virtual_joystick/lib/python2.7/dist-packages/virtual_joystick/__init__.py /duckietown/catkin_ws/devel/lib/python2.7/dist-packages/virtual_joystick/__init__.py
-/duckietown/catkin_ws/devel/.private/virtual_joystick/share/virtual_joystick/cmake/virtual_joystickConfig.cmake /duckietown/catkin_ws/devel/share/virtual_joystick/cmake/virtual_joystickConfig.cmake
-/duckietown/catkin_ws/devel/.private/virtual_joystick/share/virtual_joystick/cmake/virtual_joystickConfig-version.cmake /duckietown/catkin_ws/devel/share/virtual_joystick/cmake/virtual_joystickConfig-version.cmake
