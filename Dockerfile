@@ -74,8 +74,8 @@ COPY rosagent.py ./
 # FIXME: what is this for? envs are not persisted
 RUN /bin/bash -c "export PYTHONPATH="/usr/local/lib/python3.7/dist-packages:$PYTHONPATH""
 
-ENV HOSTNAME=default
-ENV VEHICLE_NAME=default
+ENV HOSTNAME=agent
+ENV VEHICLE_NAME=agent
 ENV ROS_MASTER_URI=http://localhost:11311
 
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
