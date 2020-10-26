@@ -4,7 +4,8 @@ PIP_INDEX_URL ?= https://pypi.org/simple
 repo0=$(shell basename -s .git `git config --get remote.origin.url`)
 repo=$(shell echo $(repo0) | tr A-Z a-z)
 branch=$(shell git rev-parse --abbrev-ref HEAD)
-tag=$(AIDO_REGISTRY)/duckietown/$(repo):$(branch)
+arch=amd64
+tag=$(AIDO_REGISTRY)/duckietown/$(repo):$(branch)-$(arch)
 
 
 build_options =  \
@@ -17,7 +18,7 @@ update-reqs:
 	aido-update-reqs requirements.resolved
 
 build: update-reqs
-	docker build --pull -t $(tag) .
+	docker build --build-arg ARCH=$(arch) --build-arg MAJOR=$(branch)  --pull -t $(tag) .
 
 build-no-cache: update-reqs
 	docker build -t $(tag)  --no-cache .
