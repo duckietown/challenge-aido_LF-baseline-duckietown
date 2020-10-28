@@ -4,10 +4,10 @@ import io
 import time
 
 import numpy as np
-from aido_schemas import (Context, Duckiebot1Commands, Duckiebot1Observations, EpisodeStart,
-                          GetCommands, LEDSCommands, protocol_agent_duckiebot1, PWMCommands, RGB, wrap_direct)
 from PIL import Image
 
+from aido_schemas import (Context, DB20Commands, DB20Observations, EpisodeStart,
+                          GetCommands, LEDSCommands, protocol_agent_duckiebot1, PWMCommands, RGB, wrap_direct)
 from rosagent import ROSAgent
 
 
@@ -32,15 +32,17 @@ class ROSTemplateAgent:
     def on_received_episode_start(self, context: Context, data: EpisodeStart):
         context.info("Starting episode %s." % data)
 
-    def on_received_observations(self, context: Context, data: Duckiebot1Observations):
+    def on_received_observations(self, context: Context, data: DB20Observations):
         jpg_data = data.camera.jpg_data
         obs = jpg2rgb(jpg_data)
+        # noinspection PyProtectedMember
         self.agent._publish_img(obs)
+        # noinspection PyProtectedMember
         self.agent._publish_info()
 
     def on_received_get_commands(self, context: Context, data: GetCommands):
         if not self.agent.initialized:
-            pwm_left, pwm_right = [0,0]
+            pwm_left, pwm_right = [0, 0]
         else:
             # TODO: let's use a queue here. Performance suffers otherwise.
             # What you should do is: *get the last command*, if available
@@ -54,7 +56,7 @@ class ROSTemplateAgent:
         grey = RGB(0.5, 0.5, 0.5)
         led_commands = LEDSCommands(grey, grey, grey, grey, grey)
         pwm_commands = PWMCommands(motor_left=pwm_left, motor_right=pwm_right)
-        commands = Duckiebot1Commands(pwm_commands, led_commands)
+        commands = DB20Commands(pwm_commands, led_commands)
 
         context.write("commands", commands)
 
