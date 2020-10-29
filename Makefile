@@ -12,3 +12,9 @@ submit-bea:
 
 submit:
 	dts challenges submit
+
+
+bump: # v2
+	bumpversion patch
+	git push --tags
+	git push
