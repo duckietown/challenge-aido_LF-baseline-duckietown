@@ -6,8 +6,19 @@ import time
 import numpy as np
 from PIL import Image
 
-from aido_schemas import (Context, DB20Commands, DB20Observations, EpisodeStart,
-                          GetCommands, LEDSCommands, protocol_agent_duckiebot1, PWMCommands, RGB, wrap_direct)
+from aido_schemas import (
+    Context,
+    DB20Commands,
+    DB20Observations,
+    EpisodeStart,
+    GetCommands,
+    LEDSCommands,
+    protocol_agent_DB20,
+    PWMCommands,
+    RGB,
+    wrap_direct,
+)
+
 from rosagent import ROSAgent
 
 
