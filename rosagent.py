@@ -127,7 +127,7 @@ class ROSAgent:
             WheelEncoderStamped(
                 data=right_rad/resolution_rad,
                 resolution=resolution_rad,
-                type==WheelEncoderStamped.ENCODER_TYPE_INCREMENTAL
+                type=WheelEncoderStamped.ENCODER_TYPE_INCREMENTAL
             )
         )
 
