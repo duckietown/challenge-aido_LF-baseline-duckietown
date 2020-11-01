@@ -118,15 +118,15 @@ class ROSAgent:
 
         self.left_encoder_pub.publish(
             WheelEncoderStamped(
-                data=left_rad/resolution_rad,
-                resolution=resolution_rad,
+                data=int(left_rad/resolution_rad),
+                resolution=int(np.pi*2/resolution_rad),
                 type=WheelEncoderStamped.ENCODER_TYPE_INCREMENTAL
             )
         )
         self.right_encoder_pub.publish(
             WheelEncoderStamped(
-                data=right_rad/resolution_rad,
-                resolution=resolution_rad,
+                data=int(right_rad/resolution_rad),
+                resolution=int(np.pi*2/resolution_rad),
                 type=WheelEncoderStamped.ENCODER_TYPE_INCREMENTAL
             )
         )
