@@ -82,5 +82,6 @@ def jpg2rgb(image_data):
 
 
 if __name__ == "__main__":
-    agent = DuckietownBaselineAgent()
-    wrap_direct(agent, protocol_agent_duckiebot1)
+    node = DuckietownBaselineAgent()
+    protocol = protocol_agent_DB20
+    wrap_direct(node=node, protocol=protocol)
