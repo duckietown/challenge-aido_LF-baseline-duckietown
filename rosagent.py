@@ -37,7 +37,7 @@ class ROSAgent:
         # For intrinsic calibration
         self.cali_file_folder = '/data/config/calibrations/camera_intrinsic/'
         self.frame_id = rospy.get_namespace().strip('/') + '/camera_optical_frame'
-        self.cali_file = self.cali_file_folder + rospy.get_namespace().strip("/") + ".yaml"
+        self.cali_file = self.cali_file_folder + f"{self.vehicle}.yaml"
 
         # Locate calibration yaml file or use the default otherwise
         if not os.path.isfile(self.cali_file):
