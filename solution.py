@@ -6,12 +6,23 @@ import time
 import numpy as np
 from PIL import Image
 
-from aido_schemas import (Context, DB20Commands, DB20Observations, EpisodeStart,
-                          GetCommands, LEDSCommands, protocol_agent_duckiebot1, PWMCommands, RGB, wrap_direct)
+from aido_schemas import (
+    Context,
+    DB20Commands,
+    DB20Observations,
+    EpisodeStart,
+    GetCommands,
+    LEDSCommands,
+    protocol_agent_DB20,
+    PWMCommands,
+    RGB,
+    wrap_direct,
+)
+
 from rosagent import ROSAgent
 
 
-class ROSTemplateAgent:
+class DuckietownBaselineAgent:
     def __init__(self):
         # Now, initialize the ROS stuff here:
         # uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
@@ -36,9 +47,16 @@ class ROSTemplateAgent:
         jpg_data = data.camera.jpg_data
         obs = jpg2rgb(jpg_data)
         # noinspection PyProtectedMember
-        self.agent._publish_img(obs)
+        self.agent.publish_img(obs)
         # noinspection PyProtectedMember
-        self.agent._publish_info()
+        self.agent.publish_info()
+
+        odometry = data.odometry
+        self.agent.publish_odometry(
+            odometry.resolution_rad,
+            odometry.axis_left_rad,
+            odometry.axis_right_rad
+        )
 
     def on_received_get_commands(self, context: Context, data: GetCommands):
         if not self.agent.initialized:
@@ -75,5 +93,6 @@ def jpg2rgb(image_data):
 
 
 if __name__ == "__main__":
-    agent = ROSTemplateAgent()
-    wrap_direct(agent, protocol_agent_duckiebot1)
+    node = DuckietownBaselineAgent()
+    protocol = protocol_agent_DB20
+    wrap_direct(node=node, protocol=protocol)

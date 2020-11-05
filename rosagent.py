@@ -5,7 +5,7 @@ import numpy as np
 import yaml
 import copy
 import rospy
-from duckietown_msgs.msg import WheelsCmdStamped
+from duckietown_msgs.msg import WheelsCmdStamped, WheelEncoderStamped
 from sensor_msgs.msg import CameraInfo, CompressedImage
 
 
@@ -13,8 +13,9 @@ class ROSAgent:
     def __init__(self):
         # Get the vehicle name, which comes in as HOSTNAME
         self.vehicle = os.getenv("HOSTNAME")
-        topic = "/{}/wheels_driver_node/wheels_cmd".format(self.vehicle)
-        self.ik_action_sub = rospy.Subscriber(topic, WheelsCmdStamped, self._ik_action_cb)
+
+        cmd_topic = "/{}/wheels_driver_node/wheels_cmd".format(self.vehicle)
+        self.ik_action_sub = rospy.Subscriber(cmd_topic, WheelsCmdStamped, self._ik_action_cb)
         # Place holder for the action, which will be read by the agent in solution.py
         self.action = np.array([0.0, 0.0])
         self.updated = True
@@ -23,16 +24,22 @@ class ROSAgent:
         # Publishes onto the corrected image topic
         # since image out of simulator is currently rectified
         #topic = "/{}/image_topic".format(self.vehicle)
-        topic = "/{}/camera_node/image/compressed".format(self.vehicle)
-        self.cam_pub = rospy.Publisher(topic, CompressedImage, queue_size=10)
+        img_topic = "/{}/camera_node/image/compressed".format(self.vehicle)
+        self.cam_pub = rospy.Publisher(img_topic, CompressedImage, queue_size=10)
 
         # Publisher for camera info - needed for the ground_projection
         #topic = "/{}/camera_info_topic".format(self.vehicle)
-        topic = "/{}/camera_node/camera_info".format(self.vehicle)
-        self.cam_info_pub = rospy.Publisher(topic, CameraInfo, queue_size=1)
+        info_topic = "/{}/camera_node/camera_info".format(self.vehicle)
+        self.cam_info_pub = rospy.Publisher(info_topic, CameraInfo, queue_size=1)
+
+        left_encoder_topic = "/{}/left_wheel_encoder_node/tick".format(self.vehicle)
+        self.left_encoder_pub = rospy.Publisher(left_encoder_topic, WheelEncoderStamped, queue_size=1)
+        right_encoder_topic = "/{}/right_wheel_encoder_node/tick".format(self.vehicle)
+        self.right_encoder_pub = rospy.Publisher(right_encoder_topic, WheelEncoderStamped, queue_size=1)
+
+
 
         # copied from camera driver:
-
 
         # For intrinsic calibration
         self.cali_file_folder = '/data/config/calibrations/camera_intrinsic/'
@@ -56,7 +63,7 @@ class ROSAgent:
 
 
         # Initializes the node
-        rospy.init_node("ROSTemplate")
+        rospy.init_node("DuckietownBasline")
 
         # 15Hz ROS Cycle - TODO: What is this number?
         self.r = rospy.Rate(15)
@@ -72,7 +79,7 @@ class ROSAgent:
         self.action = np.array([vl, vr])
         self.updated = True
 
-    def _publish_info(self):
+    def publish_info(self):
         """
         Publishes a default CameraInfo - TODO: Fix after distortion applied in simulator
         """
@@ -81,7 +88,8 @@ class ROSAgent:
         self.current_camera_info.header.stamp = stamp
         self.cam_info_pub.publish(self.current_camera_info)
 
-    def _publish_img(self, obs):
+
+    def publish_img(self, obs):
         """
         Publishes the image to the compressed_image topic, which triggers the lane following loop
         """
@@ -98,6 +106,31 @@ class ROSAgent:
         img_msg.data = np.array(cv2.imencode(".jpg", contig)[1]).tostring()
 
         self.cam_pub.publish(img_msg)
+
+    def publish_odometry(self, resolution_rad, left_rad, right_rad):
+        """
+
+        :param odom: the odometry from the DB20Observation
+        :return: none
+        """
+        if resolution_rad == 0:
+            rospy.logerr("Can't interpret encoder data with resolution 0")
+
+        self.left_encoder_pub.publish(
+            WheelEncoderStamped(
+                data=int(left_rad/resolution_rad),
+                resolution=int(np.pi*2/resolution_rad),
+                type=WheelEncoderStamped.ENCODER_TYPE_INCREMENTAL
+            )
+        )
+        self.right_encoder_pub.publish(
+            WheelEncoderStamped(
+                data=int(right_rad/resolution_rad),
+                resolution=int(np.pi*2/resolution_rad),
+                type=WheelEncoderStamped.ENCODER_TYPE_INCREMENTAL
+            )
+        )
+
 
     @staticmethod
     def load_camera_info(filename):
