@@ -1,0 +1,7 @@
+# Exercise configuration file
+
+agent_base: "duckietown_baseline" # currently not implemented, the agent base image to use
+ws_dir: "submission_ws" # directory that contains the code
+agent_run_cmd: "run_and_start.sh" # the script in "launchers" to run the agent with
+
+  

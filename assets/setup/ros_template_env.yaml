@@ -1,0 +1,2 @@
+AIDONODE_DATA_IN: /fifos/agent-in
+AIDONODE_DATA_OUT: fifo:/fifos/agent-out
