@@ -13,11 +13,11 @@ For submitting, please follow [the instructions available in the book][book].
  
 [book]: https://docs.duckietown.org/daffy/AIDO/out/
 
-[lf]: https://docs.duckietown.org/daffy/AIDO/out/lf.html
+[lf]: https://docs.duckietown.org/daffy/AIDO/out/challenge_LF.html
 
-[lfv]: https://docs.duckietown.org/daffy/AIDO/out/lf_v.html
+[lfv]: https://docs.duckietown.org/daffy/AIDO/out/challenge_LFV.html
 
-[lfvi]: https://docs.duckietown.org/daffy/AIDO/out/lf_v_i.html
+[lfvi]: https://docs.duckietown.org/daffy/AIDO/out/challenge_LFVI.html
 
 ## Description
 
