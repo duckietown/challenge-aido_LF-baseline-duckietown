@@ -24,12 +24,6 @@ from rosagent import ROSAgent
 
 class DuckietownBaselineAgent:
     def __init__(self):
-        # Now, initialize the ROS stuff here:
-        # uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
-        # roslaunch.configure_logging(uuid)
-        # roslaunch_path = os.path.join(os.getcwd(), "template.launch")
-        # self.launch = roslaunch.parent.ROSLaunchParent(uuid, [roslaunch_path])
-        # self.launch.start()
 
         # Start the ROSAgent, which handles publishing images and subscribing to action
         self.agent = ROSAgent()
@@ -47,12 +41,12 @@ class DuckietownBaselineAgent:
         jpg_data = data.camera.jpg_data
         obs = jpg2rgb(jpg_data)
         # noinspection PyProtectedMember
-        self.agent.publish_img(obs)
+        self.agent._publish_img(obs)
         # noinspection PyProtectedMember
-        self.agent.publish_info()
+        self.agent._publish_info()
 
         odometry = data.odometry
-        self.agent.publish_odometry(
+        self.agent._publish_odometry(
             odometry.resolution_rad,
             odometry.axis_left_rad,
             odometry.axis_right_rad
