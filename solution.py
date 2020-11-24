@@ -36,6 +36,7 @@ class DuckietownBaselineAgent:
 
     def on_received_episode_start(self, context: Context, data: EpisodeStart):
         context.info("Starting episode %s." % data)
+        self.agent._publish_episode_start()
 
     def on_received_observations(self, context: Context, data: DB20Observations):
         jpg_data = data.camera.jpg_data
