@@ -8,6 +8,6 @@ roscore &
 roslaunch --wait car_interface all.launch veh:=$VEHICLE_NAME &
 roslaunch --wait duckietown_demos lane_following.launch &
 python3 solution.py &
-sleep 5
-# we put a short sleep in here because rostopic will fail if there's no roscore yet
-rostopic pub /$VEHICLE_NAME/fsm_node/mode duckietown_msgs/FSMState '{header: {}, state: "LANE_FOLLOWING"}'
+
+# we wait for a roscore then publish to get in LANE_FOLLOWING state
+echo "<launch/> | roslaunch - --wait && rostopic pub /$VEHICLE_NAME/fsm_node/mode duckietown_msgs/FSMState '{header: {}, state: "LANE_FOLLOWING"}'
