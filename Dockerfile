@@ -40,10 +40,6 @@ COPY launchers .
 
 COPY --from=template ${CATKIN_WS_DIR}/src/agent ${CATKIN_WS_DIR}/src/agent
 
-# let's copy all our solution files to our workspace
-# if you have more file use the COPY command to move them to the workspace
-COPY solution.py ./
-
 ENV HOSTNAME=agent
 ENV VEHICLE_NAME=agent
 ENV ROS_MASTER_URI=http://localhost:11311
@@ -54,11 +50,6 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
     . ${CATKIN_WS_DIR}/devel/setup.bash  && \
     catkin build --workspace /code/submission_ws
-
-
-# Note: here we try to import the solution code
-# so that we can check all of the libraries are imported correctly
-RUN /bin/bash -c "source ${CATKIN_WS_DIR}/devel/setup.bash && python3 -c 'from solution import *'"
 
 ENV DISABLE_CONTRACTS=1
 CMD ["bash", "run_and_start.sh"]
