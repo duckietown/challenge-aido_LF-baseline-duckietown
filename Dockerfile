@@ -38,7 +38,7 @@ RUN mkdir submission_ws
 COPY submission_ws/src submission_ws/src
 COPY launchers .
 
-COPY --from=template ${CATKIN_WS_DIR}/src/agent ${CATKIN_WS_DIR}/src/agent
+COPY --from=template /code/submission_ws/src/agent /code/submission_ws/src/agent
 
 ENV HOSTNAME=agent
 ENV VEHICLE_NAME=agent
