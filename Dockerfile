@@ -16,7 +16,6 @@ WORKDIR /code
 COPY --from=dt-car-interface ${CATKIN_WS_DIR}/src/dt-car-interface ${CATKIN_WS_DIR}/src/dt-car-interface
 
 COPY --from=template /data/config /data/config
-COPY --from=template /code/rosagent.py .
 
 # here, we install the requirements, some requirements come by default
 # you can add more if you need to in requirements.txt
@@ -38,6 +37,8 @@ RUN pip list
 RUN mkdir submission_ws
 COPY submission_ws/src submission_ws/src
 COPY launchers .
+
+COPY --from=template ${CATKIN_WS_DIR}/src/agent ${CATKIN_WS_DIR}/src/agent
 
 # let's copy all our solution files to our workspace
 # if you have more file use the COPY command to move them to the workspace
