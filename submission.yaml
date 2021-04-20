@@ -1,5 +1,5 @@
-#challenge: #defaults to all compatible challenges
-#  - aido-LF-sim-testing
+challenge:
+  - aido-LF*
 
 protocol: aido2_db18_agent-z2
 user-label: "baseline-duckietown"
