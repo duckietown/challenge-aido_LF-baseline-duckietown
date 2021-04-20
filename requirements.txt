@@ -1,1 +1,1 @@
-aido-protocols-daffy>=6.0.40
+aido-protocols-daffy>=6.0.41
