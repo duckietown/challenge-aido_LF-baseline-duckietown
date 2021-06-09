@@ -36,7 +36,8 @@ RUN pip list
 
 RUN mkdir submission_ws
 COPY submission_ws/src submission_ws/src
-COPY launchers .
+RUN mkdir launchers
+COPY launchers/ launchers
 
 COPY --from=template /code/submission_ws/src/agent /code/submission_ws/src/agent
 
@@ -52,4 +53,4 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
     catkin build --workspace /code/submission_ws
 
 ENV DISABLE_CONTRACTS=1
-CMD ["bash", "run_and_start.sh"]
+CMD ["bash", "launchers/run_and_start.sh"]
