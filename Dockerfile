@@ -3,13 +3,13 @@
 ARG ARCH=amd64
 ARG MAJOR=daffy
 ARG BASE_TAG=${MAJOR}-${ARCH}
-ARG AIDO_REGISTRY=docker.io
+ARG DOCKER_REGISTRY=docker.io
 
-FROM ${AIDO_REGISTRY}/duckietown/dt-car-interface:${BASE_TAG} AS dt-car-interface
+FROM ${DOCKER_REGISTRY}/duckietown/dt-car-interface:${BASE_TAG} AS dt-car-interface
 
-FROM ${AIDO_REGISTRY}/duckietown/challenge-aido_lf-template-ros:${BASE_TAG} AS template
+FROM ${DOCKER_REGISTRY}/duckietown/challenge-aido_lf-template-ros:${BASE_TAG} AS template
 
-FROM ${AIDO_REGISTRY}/duckietown/dt-core:${BASE_TAG} AS base
+FROM ${DOCKER_REGISTRY}/duckietown/dt-core:${BASE_TAG} AS base
 
 WORKDIR /code
 
