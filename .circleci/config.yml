@@ -10,10 +10,13 @@ jobs:
   submit:
     docker:
       - image: ${DOCKER_REGISTRY}/duckietown/aido-submission-ci-test:daffy-amd64
+        auth:
+          username: $DOCKER_USERNAME
+          password: $DOCKER_PASSWORD
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
+#      - setup_remote_docker:
+#          docker_layer_caching: true
       - run:
           name: Python stats
           command: |
