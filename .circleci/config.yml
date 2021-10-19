@@ -27,7 +27,7 @@ jobs:
             dts tok verify ${token_dt1_bea}
             dts tok set ${token_dt1_bea}
             # this does not matter on the staging server
-            dts challenges config --docker-registry $DOCKER_REGISTRY --docker-username $DOCKER_USERNAME --docker-password $DOCKER_PASSWORD
+            dts challenges config --docker-server $DOCKER_REGISTRY --docker-username $DOCKER_USERNAME --docker-password $DOCKER_PASSWORD
       - run:
           name: "Challenges info"
           # language=bash
