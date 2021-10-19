@@ -15,6 +15,15 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
+          name: Python stats
+          command: |
+            mkdir -p build-stats
+            pip list   | sort | tee  build-stats/pip-list.txt
+            pip freeze | sort | tee  build-stats/pip-freeze.txt
+      - store_artifacts:
+        path: build-stats
+        destination: build-stats
+      - run:
           name: Setup daffy commands
           # language=bash
           command: |
