@@ -21,6 +21,7 @@ jobs:
           name: Python stats
           command: |
             mkdir -p build-stats
+            env | sort | tee  build-stats/env.txt
             pip list   | sort | tee  build-stats/pip-list.txt
             pip freeze | sort | tee  build-stats/pip-freeze.txt
       - store_artifacts:
