@@ -38,7 +38,7 @@ jobs:
           name: Submit
           # language=bash
           command: |
-            make submit-bea
+            dts challenges evaluate --challenge aido-hello-sim-validation
 
 
 #  submit:
@@ -101,5 +101,5 @@ jobs:
 #          name: Submit
 #          # language=bash
 #          command: |
-#            make submit-bea
+#            dts challenges evaluate --challenge aido-hello-sim-validation
 #      - jira/notify
