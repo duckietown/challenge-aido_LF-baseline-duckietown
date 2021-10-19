@@ -18,7 +18,7 @@ jobs:
           name: Setup daffy commands
           # language=bash
           command: |
-            dts --set-version daffy
+            dts --set-version $DTS_VERSION
             dts update
       - run:
           name: Setup token
@@ -80,7 +80,7 @@ jobs:
 #          name: Setup daffy commands
 #          # language=bash
 #          command: |
-#            dts --set-version daffy
+#            dts --set-version $DTS_VERSION
 #            dts update
 #      - run:
 #          name: Setup token
