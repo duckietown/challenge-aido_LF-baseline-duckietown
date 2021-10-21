@@ -9,4 +9,3 @@ submit-bea:
 
 submit:
 	dts challenges submit
-
