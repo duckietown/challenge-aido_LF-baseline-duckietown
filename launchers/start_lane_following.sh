@@ -2,4 +2,5 @@
 source /entrypoint.sh
 source /opt/ros/noetic/setup.bash
 source /code/catkin_ws/devel/setup.bash
-rostopic pub /$VEHICLE_NAME/fsm_node/mode duckietown_msgs/FSMState '{header: {}, state: "LANE_FOLLOWING"}'
+
+dt-exec-FG roslaunch --wait duckietown_demos set_state.launch veh:="${VEHICLE_NAME}" state:="LANE_FOLLOWING"
