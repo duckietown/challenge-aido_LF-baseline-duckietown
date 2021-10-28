@@ -5,6 +5,7 @@ source /environment.sh
 source /opt/ros/noetic/setup.bash
 source /code/catkin_ws/devel/setup.bash --extend
 source /code/solution/devel/setup.bash --extend
+source /code/submission_ws/devel/setup.bash --extend
 
 set -eux
 

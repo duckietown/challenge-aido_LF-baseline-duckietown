@@ -38,7 +38,8 @@ RUN mkdir /code/solution
 COPY solution /code/solution
 COPY launchers/ /code
 
-COPY --from=template /code/submission_ws/src/agent /code/solution/src/agent
+RUN mkdir /code/submission_ws
+COPY --from=template /code/submission_ws /code/submission_ws
 
 ENV HOSTNAME=agent
 ENV VEHICLE_NAME=agent
