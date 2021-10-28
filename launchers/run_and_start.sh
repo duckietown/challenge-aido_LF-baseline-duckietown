@@ -12,7 +12,7 @@ dt-exec-BG roscore
 
 dt-exec-BG roslaunch --wait car_interface all.launch veh:="${VEHICLE_NAME}"
 dt-exec-BG roslaunch --wait duckietown_demos lane_following.launch
-dt-exec-BG roslaunch --wait duckietown_demos set_state.launch veh:="${VEHICLE_NAME}" state:=LANE_FOLLOWING
+dt-exec-BG roslaunch --wait duckietown_demos set_state.launch veh:="${VEHICLE_NAME}" state:="LANE_FOLLOWING"
 
 rostopic list
 # foreground
