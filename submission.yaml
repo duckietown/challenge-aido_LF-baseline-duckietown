@@ -6,3 +6,4 @@ user-label: "baseline-duckietown"
 user-payload: {}
 description: |
     This is a simple baseline agent that operates through ROS using small portions of the Duckietown stack
+validation_challenge: aido-hello-sim-validation
