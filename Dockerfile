@@ -49,7 +49,7 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
 
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
     . ${CATKIN_WS_DIR}/devel/setup.bash  && \
-    catkin build --workspace /code/submission_ws
+    catkin build --workspace /code/solution
 
 ENV DISABLE_CONTRACTS=1
 CMD ["bash", "/code/run_and_start.sh"]
