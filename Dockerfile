@@ -34,12 +34,11 @@ RUN echo PYTHONPATH=$PYTHONPATH
 RUN pipdeptree
 RUN python3 -m pip list
 
-RUN mkdir submission_ws
-COPY submission_ws/src submission_ws/src
-RUN mkdir launchers
-COPY launchers/ launchers
+RUN mkdir /code/solution
+COPY solution /code/solution
+COPY launchers/ /code
 
-COPY --from=template /code/submission_ws/src/agent /code/submission_ws/src/agent
+COPY --from=template /code/submission_ws/src/agent /code/solution/src/agent
 
 ENV HOSTNAME=agent
 ENV VEHICLE_NAME=agent
@@ -53,4 +52,4 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
     catkin build --workspace /code/submission_ws
 
 ENV DISABLE_CONTRACTS=1
-CMD ["bash", "launchers/run_and_start.sh"]
+CMD ["bash", "/code/run_and_start.sh"]
