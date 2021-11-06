@@ -35,8 +35,9 @@ RUN pipdeptree
 RUN python3 -m pip list
 
 RUN mkdir /code/solution
+RUN mkdir /code/launchers
 COPY solution /code/solution
-COPY launchers/ /code
+COPY launchers/. /code/launchers
 
 RUN mkdir /code/submission_ws
 COPY --from=template /code/submission_ws /code/submission_ws
@@ -53,4 +54,4 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
     catkin build --workspace /code/solution
 
 ENV DISABLE_CONTRACTS=1
-CMD ["bash", "/code/run_and_start.sh"]
+CMD ["bash", "/code/launchers/run_and_start.sh"]
