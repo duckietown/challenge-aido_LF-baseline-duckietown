@@ -2,7 +2,7 @@
 
 ARG ARCH=amd64
 ARG MAJOR=daffy
-ARG BASE_TAG=${MAJOR}-${ARCH}
+ARG BASE_TAG=${MAJOR}
 ARG DOCKER_REGISTRY=docker.io
 
 FROM ${DOCKER_REGISTRY}/duckietown/dt-car-interface:${BASE_TAG} AS dt-car-interface
