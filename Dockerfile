@@ -20,7 +20,7 @@ COPY --from=template /data/config /data/config
 # here, we install the requirements, some requirements come by default
 # you can add more if you need to in requirements.txt
 
-ARG PIP_INDEX_URL="https://pypi.org/simple"
+ARG PIP_INDEX_URL="https://pypi.org/simple/"
 ENV PIP_INDEX_URL=${PIP_INDEX_URL}
 
 RUN python3 -m pip install -U   pipdeptree
