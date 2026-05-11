@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    <arg name="veh" default="$(env VEHICLE_NAME)" />
+    <arg name="demo_name" value="lane_following" />
+
+    <include file="$(find duckietown_demos)/launch/master.launch">
+        <arg name="veh" value="$(arg veh)" />
+        <arg name="demo_name" value="$(arg demo_name)" />
+        <arg name="param_file_name" value="default" />
+        <arg name="visualization" value="false" />
+
+        <arg name="fsm" value="true" />
+        <arg name="/fsm/logic_gate" value="false" />
+
+        <arg name="anti_instagram" value="true" />
+
+        <arg name="lane_following" value="true" />
+        <arg name="/lane_following/line_detection" value="true" />
+        <arg name="line_detector_param_file_name" value="default" />
+        <arg name="/lane_following/ground_projection" value="true" />
+        <arg name="/lane_following/lane_filter" value="false" />
+        <arg name="/lane_following/lane_controller" value="false" />
+
+        <arg name="LED" value="true" />
+        <arg name="/LED/emitter" value="true" />
+    </include>
+
+    <remap from="lane_filter_node/segment_list" to="ground_projection_node/lineseglist_out" />
+    <remap from="lane_filter_node/car_cmd" to="car_cmd_switch_node/cmd" />
+    <remap from="lane_filter_node/fsm_mode" to="fsm_node/mode" />
+    <include file="$(find lane_filter)/launch/lane_filter_node.launch">
+        <arg name="veh" value="$(arg veh)" />
+        <arg name="param_file_name" value="default" />
+    </include>
+
+    <remap from="lane_controller_node/lane_pose" to="lane_filter_node/lane_pose" />
+    <remap from="lane_controller_node/wheels_cmd" to="wheels_driver_node/wheels_cmd" />
+    <remap from="lane_controller_node/fsm_mode" to="fsm_node/mode" />
+    <remap from="lane_controller_node/obstacle_distance_reading" to="road_anomaly_watcher/obstacle_distance" />
+    <remap from="lane_controller_node/stop_line_reading" to="stop_line_filter_node/stop_line_reading" />
+    <remap from="wheels_driver_node/radius_limit" to="lane_controller_node/radius_limit" />
+    <include file="$(find lane_control)/launch/lane_controller_node.launch">
+        <arg name="veh" value="$(arg veh)" />
+        <arg name="param_file_name" value="default" />
+    </include>
+</launch>

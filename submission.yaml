@@ -1,9 +1,8 @@
 challenge:
   - aido-LF-sim-validation
-
-protocol: aido2_db18_agent-z2
+protocol: aido6_embodied_sys
 user-label: "baseline-duckietown"
 user-payload: {}
 description: |
-    This is a simple baseline agent that operates through ROS using small portions of the Duckietown stack
-validation_challenge: aido-hello-sim-validation
+    This is a simple baseline agent that operates through ROS using the ente Duckietown lane-following stack
+validation_challenge: aido-LF-sim-validation

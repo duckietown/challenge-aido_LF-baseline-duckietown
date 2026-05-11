@@ -1,0 +1,3 @@
+# XXX: should negate everything and then re-add
+*.lock
+output

@@ -1,7 +1,7 @@
 # Exercise configuration file
 
-agent_base: "duckietown_baseline" #
-ws_dir: "solution" # directory that contains the code
+agent_base: "duckietown_baseline" # the agent base image to use
+ws_dir: "." # launchers/config live at repo root; solution/ is kept for layout parity
 agent_run_cmd: "run_and_start.sh" # the script in "launchers" to run the agent with
 challenge: aido-LF-sim-validation
 ros: True

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    <node
+        name="agent_node"
+        output="screen"
+        pkg="agent"
+        required="true"
+        type="main.py"
+    />
+</launch>
