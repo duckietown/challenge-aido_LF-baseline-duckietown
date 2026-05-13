@@ -16,10 +16,6 @@ WORKDIR /code
 COPY ./dependencies.* ./
 RUN dt-pip3-install "./dependencies.*"
 
-COPY --from=duckietown-sdk src/duckietown/sdk/__init__.py /tmp/sdk_python38_compat/__init__.py
-COPY --from=duckietown-sdk src/duckietown/sdk/compat.py /tmp/sdk_python38_compat/compat.py
-RUN python3 -c "import pathlib, shutil, site; site_dir = next(pathlib.Path(path) for path in site.getsitepackages() if path.endswith(('dist-packages', 'site-packages'))); sdk_dir = site_dir / 'duckietown' / 'sdk'; sdk_dir.mkdir(parents=True, exist_ok=True); shutil.copy2('/tmp/sdk_python38_compat/__init__.py', sdk_dir / '__init__.py'); shutil.copy2('/tmp/sdk_python38_compat/compat.py', sdk_dir / 'compat.py')"
-
 COPY assets/calibrations /tmp/runtime-calibrations
 COPY ./scripts/install-runtime-calibrations.sh /usr/local/bin/install-runtime-calibrations
 RUN chmod +x /usr/local/bin/install-runtime-calibrations && \

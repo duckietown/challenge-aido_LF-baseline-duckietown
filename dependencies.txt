@@ -1,1 +1,3 @@
 # LIST YOUR PYTHON3 PACKAGES HERE
+git+https://github.com/duckietown/duckietown-messages.git@temporary
+git+https://github.com/duckietown/duckietown-sdk.git@temporary
